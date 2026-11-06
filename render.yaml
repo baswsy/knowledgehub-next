@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: zhixue
+    runtime: docker
+    plan: standard
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /_stcore/health
+    disk:
+      name: zhixue-data
+      mountPath: /app/persistent
+      sizeGB: 5
+    envVars:
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: STUDY_ACCESS_PASSWORD
+        sync: false
+      - key: STUDY_DEPLOYED
+        value: "1"

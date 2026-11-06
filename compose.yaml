@@ -1,0 +1,14 @@
+services:
+  zhixue:
+    build: .
+    ports:
+      - "127.0.0.1:8501:8501"
+    env_file:
+      - study_assistant/.env
+    environment:
+      STUDY_DEPLOYED: "1"
+    volumes:
+      - zhixue_data:/app/persistent
+    restart: unless-stopped
+volumes:
+  zhixue_data:
